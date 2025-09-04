@@ -1,20 +1,28 @@
 const express=require("express")
 const app=express()
-const users=require("./data")
+const data=require("./data")
 
-app.get("/",(req,res)=>{
-    res.send (users)
+app.use(express.json())
+
+
+app.get("/users",(req,res)=>{
+// res.send(data.users)
+res.json({
+    message:"data successful ok",
+    data:data.users,
+    time:new Date().toLocaleString()
 })
-app.get("/",(req,res)=>{
-    res.send("This is my home page")
-})
-app.get("/about",(req,res)=>{
-    res.send("This is my about page")
 })
 
-app.post("/",(req,res)=>{
-    res.send("This is my post method")
+app.post("/users",(req,res)=>{
+    const new_data=req.body
+    data.users.push(new_data)
+    res.json({
+        message:"data successfully loaded",
+        data:data.users,
+        time:new Date().toLocaleString()
+    })
 })
-app.listen(6002,()=>{
-    console.log("server is started")
+app.listen(7000,()=>{
+    console.log("server started")
 })

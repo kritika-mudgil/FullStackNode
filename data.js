@@ -1,12 +1,17 @@
 const users=[
     {
-        id:101,name:"xyz"
+        id:102,name:"xyz"
     },
     {
-        id:102,name:"abc"
+        id:103,name:"abc"
     }
 ]
-module.exports={
-    users
-}
-
+const students=[
+    {
+        id:102,name:"John"
+    },
+    {
+        id:103,name:"Bob"
+    }
+]
+module.exports={users,students}
